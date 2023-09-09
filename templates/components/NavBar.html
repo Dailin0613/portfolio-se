@@ -1,0 +1,60 @@
+{% load static %}
+
+<nav id="navbar" class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container flex-lg-column">
+        <a class="navbar-brand mx-lg-auto mb-lg-4" href="/">
+            <span class="h3 fw-bold d-block d-lg-none">Dailin Chibas</span>
+            <img class="d-none d-lg-block rounded-circle" src="{% static 'image/20230905_083423.jpg' %}"
+                alt="Sofware Engineer">
+        </a>
+        <button class="navbar-toggler hidden-lg-up" type="button" data-bs-toggle="collapse"
+            data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false"
+            aria-label="Toggle navigation"><i class="bi bi-justify"></i></button>
+        <div class="collapse navbar-collapse" id="collapsibleNavId">
+            <ul class="navbar-nav ms-auto flex-lg-column text-lg-center">
+                <li class="nav-item">
+                    <a href="{% url 'home' %}" class="nav-link scrollto active text-uppercase text-white fs-5"><i
+                            class="bi bi-house-door"></i>
+                        <span>Home</span></a>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'about' %}"
+                        class="nav-link scrollto text-uppercase text-white fs-5"><i class="bi bi-card-text"></i>
+                        <span>About</span></a>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'resume' %}" class="nav-link scrollto text-uppercase text-white fs-5"><i
+                            class="bi bi-folder2-open"></i>
+                        <span>Resume</span></a>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'list-project' %}" class="nav-link scrollto text-uppercase text-white fs-5"><i
+                            class="bi bi-journal-plus"></i>
+                        <span>Portfolio</span></a>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'list-blog' %}" class="nav-link scrollto text-uppercase text-white fs-5"><i
+                            class="bi bi-journal-album"></i>
+                        <span>Blog</span></a>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'contact' %}"
+                        class="nav-link scrollto text-uppercase text-white fs-5"><i class="bi bi-chat-left-text"></i>
+                        <span>Contact</span></a>
+                </li>
+                {% if user.is_staff %}
+                <li class="nav-item">
+                    <a href="{% url 'admin' %}"
+                        class="nav-link scrollto text-uppercase text-white fs-5"><i class="bi bi-gear"></i>
+                        <span>Dashboard</span></a>
+                </li>
+                {% endif %}
+                <li class="nav-item">
+                    <a href="{% url 'signin' %}"
+                        class="nav-link scrollto text-uppercase text-white fs-5"><i class="bi bi-person-circle"></i>
+                        <span>Login</span></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

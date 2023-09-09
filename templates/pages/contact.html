@@ -1,0 +1,80 @@
+{% extends "components/layout.html" %}
+{% load static %}
+{% block title %}Contact{% endblock %}
+{% block content %}
+<div class="col-lg-8 mx-auto mt-5 mt-lg-5">
+    <div class="d-flex bg-danger bg-opacity-25 container rounded-2 col-12 shadow-lg">
+        <form action="" method="post" class="p-3 col-12">
+            {% csrf_token %}
+
+            {{ form.non_field_errors }}
+
+            <div class="mb-3 row mt-3">
+                <label for="subject" class="col-4 col-form-label">Subject</label>
+                <div class="col-8">
+                    <input type="text" class="form-control" name="subject" id="subject" placeholder="subject">
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label for="position" class="col-4 col-form-label">Position</label>
+                <div class="col-8">
+                    <input type="text" class="form-control" name="position" id="position" placeholder="position">
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label for="full_name" class="col-4 col-form-label">Full Name</label>
+                <div class="col-8">
+                    <input type="text" class="form-control" name="full_name" id="full_name"
+                        placeholder="Your Full Name">
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label for="company_email" class="col-4 col-form-label">Company Email</label>
+                <div class="col-8">
+                    <input type="text" class="form-control" name="company_email" id="company_email"
+                        placeholder="Company Email">
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label for="salary" class="col-4 col-form-label">Salary</label>
+                <div class="col-8">
+                    <input type="text" class="form-control" name="salary" id="salary" placeholder="salary">
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label for="content" class="col-4 col-form-label">Content</label>
+                <div class="col-8">
+                    <textarea class="form-control" name="content" id="content" placeholder="content" cols="50"
+                        rows="10"></textarea>
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <div class="offset-sm-4 col-sm-8">
+                    {% if user.is_authenticated %}
+                    <button type="submit" class="btn btn-outline-danger"><i class="bi bi-send"></i>Send</button>
+                    {% else %}
+                    <a href="{% url 'login' %}" class="btn btn-primary rounded-3"><i
+                            class="bi bi-send"></i>Get Stared</a>
+                    {% endif %}
+                </div>
+            </div>
+            {% if form.errors or form.non_field_errors %}
+            <div class="list-unstyled bg-danger p-2 m-3 rounded-3">
+                {% for field in form %}
+                {{ field.errors }}
+                {% endfor %}
+            </div>
+            {% endif %}
+        </form>
+    </div>
+    <div class="p-3">
+        {% if messages %}
+        <div class="list-unstyled bg-danger p-2 m-3 rounded-3">
+            {% for message in messages %}
+            {{ message }}
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

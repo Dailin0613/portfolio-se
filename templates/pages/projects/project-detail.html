@@ -1,0 +1,43 @@
+{% extends "components/layout.html" %}
+{% load static %}
+{% block title %}{{ project.title }}{% endblock %}
+{% block content %}
+<main class="pt-5 mx-auto d-grid ms-auto">
+    <div class="card-header border-2 border-bottom border-danger m-2 pt-5">
+        <h2 class="text-white fs-4 fw-bolder text-uppercase">{{ project.title }}</h2>
+    </div>
+    <div class="pb-3">
+        <div class="d-flex justify-content-around align-items-center">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    {% for technology in technologies %}
+                    <li class="breadcrumb-item"><a href="#">{{ technology }}</a></li>
+                    {% endfor %}
+                </ol>
+            </nav>
+            <a class="link-danger btn" href="{{ project.url }}"><i class="bi bi-code-slash"></i>Code</a>
+        </div>
+        <div class="container-fluid">
+            <div class="h-25 w-50 p-2 float-start">
+                <img class="figure-img rounded-3" src="{{ project.cover.url }}" alt="{{ project.title }}" width="100px"
+                    height="100px" loading="lazy">
+            </div>
+            <p class="fs-5 text-white">{{ project.description }}</p>
+        </div>
+    </div>
+
+    <div class="container d-grid pt-2 pb-3">
+        <h2 class="fs-3 lh-sm text-white">Project Images</h2>
+        <div class="row row-cols-1 row-cols-md-3 gap-3 col-12">
+            {% for image in images %}
+            <div class="col rounded-3 card col-4" style="width: 36rem;">
+                <div class="p-2" style="height: 25rem; width: 35rem; overflow: hidden;">
+                    <img src="{{ image.image.url }}" alt="{{ project.name }}" height="100px" width="100px"
+                        class="figure-img" loading="lazy" style="height: 100%; width: 100%;">
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</main>
+{% endblock %}

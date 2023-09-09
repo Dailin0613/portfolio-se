@@ -1,0 +1,83 @@
+{% extends "components/layout.html" %}
+{% load static %}
+{% block title %}Resume{% endblock %}
+{% block content %}
+
+<style>
+    .skills {
+        display: flex;
+        flex-basis: 20rem;
+        flex-wrap: wrap;
+        gap: 2rem;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .five,
+    .four,
+    .three,
+    .two,
+    .one {
+        color: #fff5ff;
+        font: italic bold 15px;
+        padding: 2px;
+        border-radius: 2rem;
+    }
+
+    .five {
+        background-color: #dc2626;
+        width: 100%;
+    }
+
+    .four {
+        width: 80%;
+        background-color: #ef4444;
+    }
+
+    .three {
+        width: 60%;
+        background-color: #f87171;
+    }
+
+    .two {
+        width: 40%;
+        background-color: #fca5a5;
+    }
+
+    .one {
+        width: 20%;
+        background-color: #fecaca;
+    }
+</style>
+
+<div class="col-lg-10">
+    <div class="card-header bg-dark m-2 border-2 border-bottom border-danger">
+        <h2 class="text-white fs-4 fw-bolder">SKILLS</h2>
+    </div>
+    <div class="skills mx-auto">
+        {% for data in resume %}
+        <div class="card border-danger col-md-5 col-12">
+            <div class="card-body bg-black">
+                <h4 class="card-title text-white">{{ data.skill }}</h4>
+                {% if data.level == 5 %}
+                <p class="card-text text-end five">5/5</p>
+                {% endif %}
+                {% if data.level == 4 %}
+                <p class="card-text text-end four">4/5</p>
+                {% endif %}
+                {% if data.level == 3 %}
+                <p class="card-text text-end three">3/5</p>
+                {% endif %}
+                {% if data.level == 2 %}
+                <p class="card-text text-end two">2/5</p>
+                {% endif %}
+                {% if data.level == 1 %}
+                <p class="card-text text-end one">1/5</p>
+                {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    </main>
+
+    {% endblock %}

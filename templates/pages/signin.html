@@ -1,0 +1,36 @@
+{% extends "components/layout.html" %}
+{% load static %}
+{% block title %}Signin{% endblock %}
+{% block content %}
+<main class="col-lg-6 mx-auto mt-4 pt-5 pb-4">
+    <div class="card-header m-2 border-2 border-bottom border-danger">
+        <h2 class="text-white fs-4 fw-bolder">SIGNIN</h2>
+    </div>
+    <div class="container mx-auto col-md-8 col-12 d-grid gap-2">
+        <form action="" method="post" class="col-lg-12">
+            {% csrf_token %}
+
+            {{ form.non_field_errors }}
+
+            <div class="mb-3">
+                <label class="d-inline-block mb-2">Username</label><br />
+                {{ form.username }}
+            </div>
+
+            <div class="mb-3">
+                <label class="d-inline-block mb-2">Password</label><br />
+                {{ form.password }}
+            </div>
+
+            <button type="submit" class="btn btn-primary mx-auto">Signin</button>
+        </form>
+        <div class="card bg-dark border-1 border-danger">
+            <div class="card-body">
+                <a href="{% url 'signup' %}" class="page-link text-white">Click in this link for signup if you
+                    are not
+                    register</a>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

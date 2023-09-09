@@ -1,0 +1,19 @@
+{% extends "components/layout.html" %}
+{% load static %}
+{% block title %}About{% endblock %}
+{% block content %}
+<main class="mx-auto mt-4 pt-5 pb-4">
+    <div class="card-header m-2 border-2 border-bottom border-danger">
+        <h2 class="text-white fs-4 fw-bolder">ABOUT</h2>
+    </div>
+    <div class="container">
+        {% for data in about %}
+        <div class="float-start border-2 border-danger border-opacity-50 bg-light bg-opacity-50 p-2">
+            <p class="text-white text-center fs-3">Background: {{ data.background }}</p>
+            <p class="text-white-50 text-center fs-3">Qualifications: {{ data.qualifications }}</p>
+        </div>
+        <p class="text-white p-2 lh-lg fw-normal">{{ data.content }}</p>
+        {% endfor %}
+    </div>
+</main>
+{% endblock %}

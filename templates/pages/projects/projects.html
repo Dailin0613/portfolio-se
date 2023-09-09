@@ -1,0 +1,66 @@
+{% extends "components/layout.html" %} {% load static %} {% block title %}Projects{% endblock %} {% block content %}
+<div class="pt-5 mx-auto d-grid ms-auto mt-4">
+    <div class="card-header m-2 border-2 border-bottom border-danger">
+        <h2 class="text-white fs-4 fw-bolder">PROJECTS</h2>
+    </div>
+    <div class="container col-12">
+        <div class="row row-cols-1 row-cols-md-4 align-items-strech gap-4 py-5">
+            {% for project in projects %}
+            <div class="col card text-white bg-dark border border-2 border-danger mx-md-auto" style="width: 32rem;">
+                <div class="p-2" style="height: 20rem; width: 30rem; overflow: hidden;">
+                    <img loading="lazy" class="figure-img rounded-2" src="{{ project.cover.url }}"
+                        alt="{{ project.title }}" height="150px" width="150px" style="height: 100%; width: 100%;">
+                </div>
+                <div class="card-body">
+                    <h4 class="card-title">Title: {{ project.title }}</h4>
+                    <a class="btn btn-primary text-uppercase border-1 border-light btn-dark rounded-2 mx-auto"
+                        href="{{ project.get_absolute_url }}" role="button">See More</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+
+    {% if page_obj.has_other_pages %}
+    <nav aria-label="Page navigation" class="pt-2 mx-auto">
+        <ul class="pagination rounded-2">
+            {% if page_obj.has_previous %}
+            <li class="page-item">
+                <a class="page-link" href="?page=1" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            <li class="page-item disabled" aria-current="page">
+                <a class="page-link" href="?page{{ page_obj.previous_page_number }}">1</a>
+            </li>
+            {% else %}
+            <li class="page-item disabled"></li>
+            {% endif %}
+            {% for i in page_obj.paginator.page_range %}
+            {% if page_obj.number == i %}
+            <li class="page-item active">
+                <a class="page-link" tabindex="-1" aria-disabled="true" href="?page={{ i }}">{{ i }}</a>
+            </li>
+            {% else %}
+            <li class="page-item">
+                <a href="?page{{ i }}" class="page-link">{{ i }}</a>
+            </li>
+            {% endif %}
+            {% endfor %}
+            {% if page_obj.has_next %}
+            <li class="page-item active" aria-current="page">
+                <a class="page-link" href="?page={{ page_obj.next_page_number }}">{{ page_obj.next_page_number }}</a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" style="border-radius: 1px; border: 1px solid #9067c9"
+                    href="?page={{ page_obj.paginator.num_pages }}" aria-label="Previous">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+            {% endif %}
+        </ul>
+    </nav>
+    {% endif %}
+</div>
+{% endblock %}

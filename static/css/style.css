@@ -1,0 +1,89 @@
+@font-face {
+  font-family: "Ysabeau-VariableFont_wght";
+  src: url("Ysabeau-VariableFont_wght.ttf") format("truetype");
+}
+
+:root {
+  --color-body: #fff5ff;
+  --color-heading: #f8e1e1;
+  --color-base: #39393a;
+  --color-base2: #212122;
+  --color-brand: #8f2f47;
+  --color-brand2: #6d041e;
+  --side-bar: 240px;
+  --font-base: "Ysabeau-VariableFont_wght";
+}
+
+body {
+  background-color: var(--color-base2) !important;
+  color: var(--color-body) !important;
+  font-family: var(--font-base), sans-serif !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--color-heading);
+}
+
+a {
+  color: var(--color-body);
+  text-decoration: none;
+  transition: all 0.4s ease;
+}
+
+a:hover {
+  color: var(--color-brand) !important;
+}
+
+img {
+  width: 100%;
+}
+
+.text-brand {
+  color: var(--color-brand);
+}
+
+.btn-brand:hover,
+.btn-brand:focus {
+  background-color: var(--color-brand2);
+  color: var(--color-body);
+  border-color: var(--color-brand2);
+}
+
+/*NAVBAR*/
+.navbar {
+  border-color: var(--color-base) !important;
+}
+
+.navbar .nav-link.active {
+  color: var(--color-brand);
+}
+
+.full-height {
+  min-height: 100vh;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+@media (min-width: 992px) {
+  .navbar {
+    min-height: 100vh;
+    width: var(--side-bar);
+    background: linear-gradient(rgb(97, 94, 94), #1f1e1e),
+      url("../image/Wallpaper.jpeg");
+    background-size: cover;
+    background-position: center;
+  }
+  .navbar-brand img {
+    border: 0.5rem solid var(--color-brand);
+  }
+  #content-wrapper {
+    padding-left: var(--side-bar);
+  }
+}
